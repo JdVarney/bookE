@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		280ABA02274AA21400203006 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2827DF3F274AA0B3006CEB12 /* PerformanceTests.swift */; };
 		2827DF3227498998006CEB12 /* bookEUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2827DF3127498998006CEB12 /* bookEUnitTests.swift */; };
 		2827DF3B274989EA006CEB12 /* ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2853C8932744031A00DCBC82 /* ProjectTests.swift */; };
 		2827DF3C274989ED006CEB12 /* AssetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2853C88F2742C7AC00DCBC82 /* AssetTests.swift */; };
@@ -69,6 +70,7 @@
 /* Begin PBXFileReference section */
 		2827DF2F27498998006CEB12 /* bookEUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bookEUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2827DF3127498998006CEB12 /* bookEUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookEUnitTests.swift; sourceTree = "<group>"; };
+		2827DF3F274AA0B3006CEB12 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 		282A91AC273C429900C42745 /* bookE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bookE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		282A91AF273C429900C42745 /* bookEApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookEApp.swift; sourceTree = "<group>"; };
 		282A91B1273C429900C42745 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -144,11 +146,12 @@
 		2827DF3027498998006CEB12 /* bookEUnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				2853C8952744181200DCBC82 /* AwardsTests.swift */,
-				28B0855527441F1B005AEE04 /* DevelopmentTests.swift */,
 				2853C88F2742C7AC00DCBC82 /* AssetTests.swift */,
-				2853C8932744031A00DCBC82 /* ProjectTests.swift */,
+				2853C8952744181200DCBC82 /* AwardsTests.swift */,
 				2827DF3127498998006CEB12 /* bookEUnitTests.swift */,
+				28B0855527441F1B005AEE04 /* DevelopmentTests.swift */,
+				2827DF3F274AA0B3006CEB12 /* PerformanceTests.swift */,
+				2853C8932744031A00DCBC82 /* ProjectTests.swift */,
 			);
 			path = bookEUnitTests;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 					};
 					282A91BB273C429A00C42745 = {
 						CreatedOnToolsVersion = 13.1;
+						LastSwiftMigration = 1310;
 						TestTargetID = 282A91AB273C429900C42745;
 					};
 					282A91C5273C429A00C42745 = {
@@ -446,6 +450,7 @@
 			files = (
 				2827DF3227498998006CEB12 /* bookEUnitTests.swift in Sources */,
 				2827DF3D274989F4006CEB12 /* AwardsTests.swift in Sources */,
+				280ABA02274AA21400203006 /* PerformanceTests.swift in Sources */,
 				2827DF3C274989ED006CEB12 /* AssetTests.swift in Sources */,
 				2827DF3B274989EA006CEB12 /* ProjectTests.swift in Sources */,
 				2827DF3E274989F8006CEB12 /* DevelopmentTests.swift in Sources */,
@@ -745,6 +750,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WWF5QT5KNU;
@@ -759,6 +765,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jdvarney.bookETests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bookE.app/bookE";
@@ -770,6 +777,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WWF5QT5KNU;
