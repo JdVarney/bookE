@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "7AD72231-9F9F-4530-881F-803F748E54EC",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:bookE.xcodeproj",
+        "identifier" : "282A91BB273C429A00C42745",
+        "name" : "bookETests"
+      }
+    }
+  ],
+  "version" : 1
+}

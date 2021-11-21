@@ -1,0 +1,61 @@
+/* 
+  Localizable.strings
+  bookE
+
+  Created by John on 11/13/21.
+  
+*/
+
+// Menu items
+"Home" = "Home";
+"Open" = "Open";
+"Closed" = "Closed";
+"Awards";
+
+"Unlocked" = "Unlocked";
+"Locked" = "Locked";
+"Edit Item" = "Edit Item";
+
+"Open Projects" = "Open Projects";
+"Closed Projects" = "Closed Projects";
+"Add Project" = "Add Project";
+"Sort" = "Sort";
+"Add New Item" = "Add New Item";
+
+"Mark Completed" = "Mark Completed";
+
+"Edit Project" = "Edit Project";
+"Close this project" = "Close this project";
+"Reopen this project" = "Reopen this project";
+"Delete this project" = "Delete this project";
+
+"Up next" = "Up next";
+"More to explore" = "More to explore";
+"New Project" = "New Project";
+"New Item" = "New Item";
+
+"Open Projects" = "Open Projects";
+"Closed Projects" = "Closed Projects";
+"Add Project" = "Add Project";
+"Add New Item" = "Add New Item";
+"There's nothing here right now" = "There's nothing here right now";
+"Sort" = "Sort";
+"Sort items" = "Sort items";
+"Optimized" = "Optimized";
+"Creation Date" = "Creation Date";
+"Title" = "Title";
+
+/* A button that shows a menu with the following options */
+"Sort" = "Sort";
+"Sort items" = "Sort items"; /* The title of the menu */
+"Optimized" = "Optimized"; /* Sort using an optimized algorithm */
+"Creation Date" = "Creation Date"; /* Sort by the date items were created */
+"Title" = "Title"; /* Sort by item title */
+
+"Description of this project" = "Description of this project";
+"Priority" = "Priority";
+"Add Data" = "Add Data";
+"Description" = "Description";
+
+"New Project" = "New Project";
+"New Item" = "New Item";
