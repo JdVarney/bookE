@@ -51,47 +51,29 @@ struct HomeView: View {
                 VStack(alignment: .leading) {
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHGrid(rows: projectRows) {
-                            
-                            ForEach(projects) { project in
-                                VStack(alignment: .leading) {
-                                    Text("\(project.projectItems.count) items")
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-
-                                    Text(project.projectTitle)
-                                        .font(.title2)
-
-                                    ProgressView(value: project.completionAmount)
-                                        .accentColor(Color(project.projectColor))
-                                }
-                                .padding()
-                                .background(Color.secondarySystemGroupedBackground)
-                                .cornerRadius(10)
-                                .shadow(color: Color.black.opacity(0.2), radius: 5)
-                            }
+                            ForEach(projects, content: ProjectSummaryView.init)
                         }
-                        .fixedSize(horizontal: false, vertical: true)
-                        
                     }
-                    VStack(alignment: .leading) {
-                        ItemListView(title: "Up next", items: items.wrappedValue.prefix(3))
-                        ItemListView(title: "More to explore", items: items.wrappedValue.dropFirst(3))
-                    }
+                    .fixedSize(horizontal: false, vertical: true)
                 }
-            } .toolbar {
-                Button("Add Data") {
-                    dataController.deleteAll()
-                    try? dataController.createSampleData()
+                VStack(alignment: .leading) {
+                    ItemListView(title: "Up next", items: items.wrappedValue.prefix(3))
+                    ItemListView(title: "More to explore", items: items.wrappedValue.dropFirst(3))
                 }
             }
+            .navigationTitle("Home")
             .padding(.horizontal)
             .padding([.horizontal, .top])
-            .navigationTitle("Home")
             .background(Color.systemGroupedBackground.ignoresSafeArea(.all))
-
+        } .toolbar {
+            Button("Add Data") {
+                dataController.deleteAll()
+                try? dataController.createSampleData()
+            }
         }
     }
 }
+
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
