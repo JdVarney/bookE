@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "AD00C100-F475-4B1C-ADE0-A72349A06917",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:bookE.xcodeproj",
+        "identifier" : "2827DF2E27498998006CEB12",
+        "name" : "bookEUnitTests"
+      }
+    }
+  ],
+  "version" : 1
+}

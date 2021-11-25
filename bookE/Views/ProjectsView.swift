@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct ProjectsView: View {
-    
+
     @EnvironmentObject var dataController: DataController
     @Environment(\.managedObjectContext) var managedObjectContext
-    
+
     @State private var showingSortOrder = false
     @State private var sortOrder = Item.SortOrder.optimized
     @State var sortDescriptor: NSSortDescriptor?
 
     let showClosedProjects: Bool
     let projects: FetchRequest<Project>
-    
+
     static let openTag: String? = "Open"
     static let closedTag: String? = "Closed"
 
@@ -28,7 +28,7 @@ struct ProjectsView: View {
             NSSortDescriptor(keyPath: \Project.creationDate, ascending: false)
         ], predicate: NSPredicate(format: "closed = %d", showClosedProjects))
     }
-    
+
    func items(for project: Project) -> [Item] {
     switch sortOrder {
     case .title:
@@ -113,7 +113,6 @@ struct ProjectsView: View {
     .navigationTitle(showClosedProjects ? "Closed Projects" : "Open Projects")
     .listStyle(InsetGroupedListStyle())
 
-
     SelectSomethingView()
     .toolbar {
         if showClosedProjects == false {
@@ -131,7 +130,7 @@ struct ProjectsView: View {
             }
         }
     }
-    
+
 }
 
 struct ProjectsView_Previews: PreviewProvider {

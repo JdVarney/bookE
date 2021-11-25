@@ -32,7 +32,7 @@ struct ContentView: View {
                     Image(systemName: "checkmark")
                     Text("Closed")
                 }
-            
+
             AwardsView()
                 .tag(AwardsView.tag)
                 .tabItem {
@@ -51,4 +51,3 @@ struct ContentView_Previews: PreviewProvider {
             .environmentObject(dataController)
     }
 }
-

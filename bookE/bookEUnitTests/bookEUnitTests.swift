@@ -5,8 +5,6 @@
 //  Created by John on 11/20/21.
 //
 
-import XCTest
-
 import CoreData
 
 import XCTest
@@ -15,7 +13,7 @@ import XCTest
 class BaseTestCase: XCTestCase {
     var dataController: DataController!
     var managedObjectContext: NSManagedObjectContext!
-    
+
     override func setUpWithError() throws {
         dataController = DataController(inMemory: true)
         managedObjectContext = dataController.container.viewContext

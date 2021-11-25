@@ -27,20 +27,19 @@ func testCreatingProjectsAndItems() {
     XCTAssertEqual(dataController.count(for: Project.fetchRequest()), targetCount)
     XCTAssertEqual(dataController.count(for: Item.fetchRequest()), targetCount * targetCount)
 }
-    
+
 func testDeletingProjectCascadeDeletesItems() throws {
     try dataController.createSampleData()
-    
+
     let request = NSFetchRequest<Project>(entityName: "Project")
     let projects = try managedObjectContext.fetch(request)
 
     dataController.delete(projects[0])
-    
+
     XCTAssertEqual(dataController.count(for: Project.fetchRequest()), 4)
     XCTAssertEqual(dataController.count(for: Item.fetchRequest()), 40)
-    
     }
-    
+
     func testExampleProjectIsClosed() {
         let project = Project.example
         XCTAssertTrue(project.closed, "The example project should be closed.")

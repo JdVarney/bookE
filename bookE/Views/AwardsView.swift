@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct AwardsView: View {
-    
+
     @State private var selectedAward = Award.example
     @State private var showingAwardDetails = false
-    
+
     static let tag: String? = "Awards"
     @EnvironmentObject var dataController: DataController
 
     var columns: [GridItem] {
         [GridItem(.adaptive(minimum: 100, maximum: 100))]
     }
-    
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -49,7 +49,7 @@ struct AwardsView: View {
         }
 
     }
-    
+
 }
 
 struct AwardView_Previews: PreviewProvider {

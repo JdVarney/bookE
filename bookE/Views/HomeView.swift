@@ -9,13 +9,13 @@ import SwiftUI
 import CoreData
 
 struct HomeView: View {
-    
+
     @EnvironmentObject var dataController: DataController
-    
+
     static let tag: String? = "Home"
-    
+
     let items: FetchRequest<Item>
-    
+
     // Construct a fetch request to show the 10 highest-priority,
     //      incomplete items from open projects.
     init() {
@@ -34,15 +34,15 @@ struct HomeView: View {
         request.fetchLimit = 10
         items = FetchRequest(fetchRequest: request)
     }
-    
+
     var projectRows: [GridItem] {
         [GridItem(.fixed(100))]
     }
-    
+
     @FetchRequest(entity: Project.entity(), sortDescriptors:
         [NSSortDescriptor(keyPath: \Project.title, ascending: true)],
             predicate: NSPredicate(format: "closed = false"))
-    
+
     var projects: FetchedResults<Project>
 
     var body: some View {
@@ -73,7 +73,6 @@ struct HomeView: View {
         }
     }
 }
-
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {

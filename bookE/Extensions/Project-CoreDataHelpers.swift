@@ -20,15 +20,15 @@ extension Project {
     var projectColor: String {
         color ?? "Light Blue"
     }
-    
+
     static let colors = ["Pink", "Purple", "Red", "Orange", "Gold", "Green",
                          "Teal", "Light Blue", "Dark Blue", "Midnight",
                          "Dark Gray", "Gray"]
-    
+
     var projectItems: [Item] {
         items?.allObjects as? [Item] ?? []
     }
-    
+
     var projectItemsDefaultSorted: [Item] {
         projectItems.sorted { first, second in
             if first.completed == false {
@@ -49,7 +49,7 @@ extension Project {
             return first.itemCreationDate < second.itemCreationDate
         }
     }
-    
+
     var completionAmount: Double {
         let originalItems = items?.allObjects as? [Item] ?? []
         guard originalItems.isEmpty == false else { return 0 }
@@ -57,7 +57,7 @@ extension Project {
         let completedItems = originalItems.filter(\.completed)
         return Double(completedItems.count) / Double(originalItems.count)
     }
-    
+
     static var example: Project {
        // let controller = DataController(inMemory: true)
         let controller = DataController.preview

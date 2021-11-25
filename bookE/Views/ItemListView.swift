@@ -47,4 +47,3 @@ struct ItemListView: View {
         }
     }
 }
-

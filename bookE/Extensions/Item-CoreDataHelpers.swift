@@ -8,7 +8,7 @@
 import Foundation
 
 extension Item {
-    
+
     var itemTitle: String {
         title ?? NSLocalizedString("New Item", comment: "Create a new item")
     }
@@ -19,14 +19,14 @@ extension Item {
     var itemCreationDate: Date {
         creationDate ?? Date()
     }
+
     enum SortOrder {
         case optimized, title, creationDate
     }
-    
+
     static var example: Item {
         let controller = DataController.preview
 
-       // let controller = DataController(inMemory: true)
         let viewContext = controller.container.viewContext
 
         let item = Item(context: viewContext)
