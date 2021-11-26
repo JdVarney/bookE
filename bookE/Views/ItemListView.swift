@@ -41,7 +41,6 @@ struct ItemListView: View {
                     .padding()
                     .background(Color.secondarySystemGroupedBackground)
                     .cornerRadius(10)
-
                 }
             }
         }

@@ -65,11 +65,14 @@ struct HomeView: View {
             .padding(.horizontal)
             .padding([.horizontal, .top])
             .background(Color.systemGroupedBackground.ignoresSafeArea(.all))
-        } .toolbar {
-            Button("Add Data") {
-                dataController.deleteAll()
-                try? dataController.createSampleData()
+#if DEBUG
+            .toolbar {
+                Button("Add Data") {
+                    dataController.deleteAll()
+                    try? dataController.createSampleData()
+                }
             }
+#endif
         }
     }
 }

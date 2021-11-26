@@ -32,6 +32,7 @@
 		282A91DB273C433200C42745 /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 282A91D9273C433200C42745 /* Main.xcdatamodeld */; };
 		282A91DD273C4A4C00C42745 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282A91DC273C4A4C00C42745 /* DataController.swift */; };
 		282A91E1273C4CCF00C42745 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 282A91E0273C4CCF00C42745 /* CloudKit.framework */; };
+		282AECF227505F260064AA96 /* Open Issues.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 282AECF127505F260064AA96 /* Open Issues.pdf */; };
 		283CB71D273C5A0F008D5D26 /* Item-CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283CB71C273C5A0F008D5D26 /* Item-CoreDataHelpers.swift */; };
 		283CB71F273C5AAE008D5D26 /* Project-CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283CB71E273C5AAE008D5D26 /* Project-CoreDataHelpers.swift */; };
 		283CB725273C7CEF008D5D26 /* Binding-OnChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283CB724273C7CEF008D5D26 /* Binding-OnChange.swift */; };
@@ -96,6 +97,7 @@
 		282A91DE273C4C6800C42745 /* bookE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = bookE.entitlements; sourceTree = "<group>"; };
 		282A91E0273C4CCF00C42745 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		282A91E2273C4DAD00C42745 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		282AECF127505F260064AA96 /* Open Issues.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Open Issues.pdf"; sourceTree = "<group>"; };
 		283CB71C273C5A0F008D5D26 /* Item-CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item-CoreDataHelpers.swift"; sourceTree = "<group>"; };
 		283CB71E273C5AAE008D5D26 /* Project-CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project-CoreDataHelpers.swift"; sourceTree = "<group>"; };
 		283CB724273C7CEF008D5D26 /* Binding-OnChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding-OnChange.swift"; sourceTree = "<group>"; };
@@ -161,6 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				280ABA03274B097C00203006 /* TestPlan.xctestplan */,
+				282AECF127505F260064AA96 /* Open Issues.pdf */,
+				282A91AF273C429900C42745 /* bookEApp.swift */,
 				282A91AE273C429900C42745 /* bookE */,
 				282A91AD273C429900C42745 /* Products */,
 				282A91DF273C4CCF00C42745 /* Frameworks */,
@@ -182,7 +186,6 @@
 			isa = PBXGroup;
 			children = (
 				285185FF27400EFE00A121B9 /* Award.swift */,
-				282A91AF273C429900C42745 /* bookEApp.swift */,
 				2827DF3027498998006CEB12 /* bookEUnitTests */,
 				282A91C9273C429A00C42745 /* bookEUITests */,
 				285185FB273EBF7A00A121B9 /* Data */,
@@ -400,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2851860A274073D100A121B9 /* Localizable.strings in Resources */,
+				282AECF227505F260064AA96 /* Open Issues.pdf in Resources */,
 				282A91B7273C429A00C42745 /* Preview Assets.xcassets in Resources */,
 				285186062740146400A121B9 /* Awards.json in Resources */,
 				282A91B4273C429A00C42745 /* Assets.xcassets in Resources */,

@@ -37,8 +37,26 @@ struct ProjectsView: View {
         return project.projectItems.sorted { $0.itemCreationDate < $1.itemCreationDate }
     case .optimized:
         return project.projectItemsDefaultSorted
+        }
+   }
+
+   func addItem(to project: Project) {
+       withAnimation {
+           let item = Item(context: managedObjectContext)
+           item.project = project
+           item.creationDate = Date()
+           dataController.save()
+       }
+   }
+
+    func addProject() {
+        withAnimation {
+            let project = Project(context: managedObjectContext)
+            project.closed = false
+            project.creationDate = Date()
+            dataController.save()
+        }
     }
-}
 
     var body: some View {
         NavigationView {
@@ -72,12 +90,7 @@ struct ProjectsView: View {
 
                         if showClosedProjects == false {
                             Button {
-                                withAnimation {
-                                    let item = Item(context: managedObjectContext)
-                                    item.project = project
-                                    item.creationDate = Date()
-                                    dataController.save()
-                                }
+                                addItem(to: project)
                             } label: {
                                 Label("Add New Item", systemImage: "plus")
                             }
@@ -88,15 +101,12 @@ struct ProjectsView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     if showClosedProjects == false {
-                        Button {
-                            withAnimation {
-                                let project = Project(context: managedObjectContext)
-                                project.closed = false
-                                project.creationDate = Date()
-                                dataController.save()
+                        Button(action: addProject) {
+                            if UIAccessibility.isVoiceOverRunning {
+                                Text("Add Project")
+                            } else {
+                                Label("Add Project", systemImage: "plus")
                             }
-                        } label: {
-                            Label("Add Project", systemImage: "plus")
                         }
                     }
                 }
@@ -114,6 +124,7 @@ struct ProjectsView: View {
     .listStyle(InsetGroupedListStyle())
 
     SelectSomethingView()
+            
     .toolbar {
         if showClosedProjects == false {
             Button {
