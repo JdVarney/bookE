@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// swiftlint:disable line_length
+
 struct AwardsView: View {
 
     @State private var selectedAward = Award.example
