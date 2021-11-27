@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditProjectView: View {
-    let project: Project
+    @ObservedObject var project: Project
 
     @EnvironmentObject var dataController: DataController
     @Environment(\.presentationMode) var presentationMode
@@ -84,11 +84,11 @@ struct EditProjectView: View {
         .navigationTitle("Edit Project")
         .onDisappear(perform: dataController.save)
         .alert(isPresented: $showingDeleteConfirm) {
-        Alert(title: Text("Delete project?"),
-              message: Text("Are you sure you want to delete this project? " +
-                            "You will also delete all the items it contains."),
-              primaryButton: .default(Text("Delete"), action: delete),
-              secondaryButton: .cancel())
+            Alert(title: Text("Delete project?"),
+                  message: Text("Are you sure you want to delete this project? " +
+                                "You will also delete all the items it contains."),
+                  primaryButton: .default(Text("Delete"), action: delete),
+                  secondaryButton: .cancel())
         }
     }
 }
