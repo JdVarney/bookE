@@ -39,9 +39,10 @@ struct ContentView: View {
                     Image(systemName: "rosette")
                     Text("Awards")
                 }
+            }
         }
     }
-}
+
 struct ContentView_Previews: PreviewProvider {
     static var dataController = DataController.preview
 

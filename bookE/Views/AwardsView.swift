@@ -49,9 +49,7 @@ struct AwardsView: View {
                 return Alert(title: Text("Locked"), message: Text(selectedAward.description), dismissButton: .default(Text("OK")))
             }
         }
-
     }
-
 }
 
 struct AwardView_Previews: PreviewProvider {
