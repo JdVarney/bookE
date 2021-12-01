@@ -32,7 +32,6 @@ struct ItemRowView: View {
                 icon
             }
         }
-        Text(item.itemTitle)
     }
 }
 
