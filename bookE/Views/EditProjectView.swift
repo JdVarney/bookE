@@ -72,11 +72,13 @@ struct EditProjectView: View {
             // swiftlint:disable line_length
             Section(footer: Text("Closing a project moves it from the Open to Closed tab; deleting it removes the project completely.")) {
                 Button(project.closed ? "Reopen this project" : "Close this project") {
-            project.closed.toggle()
-            update()
-        }
+                    project.closed.toggle()
+                    if project.closed {
+                        UINotificationFeedbackGenerator().notificationOccurred(.success)
+                    }
+                    update()
+                }
             }
-
             Button("Delete this project") {
                 showingDeleteConfirm.toggle()
             }

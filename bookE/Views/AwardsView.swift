@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// swiftlint:disable line_length
-
 struct AwardsView: View {
 
     @State private var selectedAward = Award.example
@@ -35,7 +33,9 @@ struct AwardsView: View {
                                 .scaledToFit()
                                 .padding()
                                 .frame(width: 100, height: 100)
-                                .foregroundColor(dataController.hasEarned(award: award) ? Color(award.color) : Color.secondary.opacity(0.5))
+                                .foregroundColor(dataController.hasEarned(
+                                    award: award) ? Color(award.color)
+                                        : Color.secondary.opacity(0.5))
                         }
                     }
                 }
@@ -44,9 +44,13 @@ struct AwardsView: View {
         }
         .alert(isPresented: $showingAwardDetails) {
             if dataController.hasEarned(award: selectedAward) {
-                return Alert(title: Text("Unlocked: \(selectedAward.name)"), message: Text(selectedAward.description), dismissButton: .default(Text("OK")))
+                return Alert(title: Text("Unlocked: \(selectedAward.name)"),
+                    message: Text(selectedAward.description),
+                    dismissButton: .default(Text("OK")))
             } else {
-                return Alert(title: Text("Locked"), message: Text(selectedAward.description), dismissButton: .default(Text("OK")))
+                return Alert(title: Text("Locked"), message:
+                    Text(selectedAward.description), dismissButton:
+                        .default(Text("OK")))
             }
         }
     }

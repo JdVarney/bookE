@@ -33,7 +33,7 @@ struct bookEApp: App {
                 // phase won't detect our app losing focus.
                 .onReceive(NotificationCenter.default.publisher(
                     for: UIApplication.willResignActiveNotification),
-                           perform: save)
+                        perform: save)
             }
         }
     }

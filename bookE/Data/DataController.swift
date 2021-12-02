@@ -4,11 +4,11 @@
 //
 //  Created by John on 11/6/21.
 //
-
+import CoreSpotlight
 import CoreData
 import SwiftUI
 
-/// /// An environment singleton responsible for managing our Core Data stack, including handling saving,
+/// An environment singleton responsible for managing our Core Data stack, including handling saving,
 /// counting fetch requests, tracking awards, and dealing with sample data.
 ///
 class DataController: ObservableObject {
@@ -151,5 +151,36 @@ class DataController: ObservableObject {
             // fatalError("Unknown award criterion \(award.criterion).")
             return false
         }
+    }
+
+    func update(_ item: Item) {
+        let itemID = item.objectID.uriRepresentation().absoluteString
+        let projectID = item.project?.objectID.uriRepresentation().absoluteString
+
+        let attributeSet = CSSearchableItemAttributeSet(contentType: .text)
+        attributeSet.title = item.title
+        attributeSet.contentDescription = item.detail
+
+        let searchableItem = CSSearchableItem(
+            uniqueIdentifier: itemID,
+            domainIdentifier: projectID,
+            attributeSet: attributeSet
+        )
+
+        CSSearchableIndex.default().indexSearchableItems([searchableItem])
+
+        save()
+    }
+
+    func item(with uniqueIdentifier: String) -> Item? {
+        guard let url = URL(string: uniqueIdentifier) else {
+            return nil
+        }
+
+        guard let id = container.persistentStoreCoordinator.managedObjectID(forURIRepresentation: url) else {
+            return nil
+        }
+
+        return try? container.viewContext.existingObject(with: id) as? Item
     }
 }
