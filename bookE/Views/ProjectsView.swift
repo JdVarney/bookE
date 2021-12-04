@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ProjectsView: View {
 
+    @StateObject var viewModel: ViewModel
+    @State private var showingSortOrder = false
+    @State var sortDescriptor: NSSortDescriptor?
+
     init(dataController: DataController, showClosedProjects: Bool) {
         let viewModel = ViewModel(dataController: dataController, showClosedProjects: showClosedProjects)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-
-    @StateObject var viewModel: ViewModel
-    @State private var showingSortOrder = false
-    @State var sortDescriptor: NSSortDescriptor?
 
     static let openTag: String? = "Open"
     static let closedTag: String? = "Closed"
@@ -53,36 +53,36 @@ struct ProjectsView: View {
         List {
             ForEach(viewModel.projects) { project in
                 Section(header: ProjectHeaderView(project: project)) {
-                ForEach(viewModel.items(for: project)) { item in
-                    ItemRowView(project: project, item: item)
-                }
-                .onDelete { offsets in
-                    let allItems = project.projectItems
-
-                    for offset in offsets {
-                        let item = allItems[offset]
-                        viewModel.dataController.delete(item)
+                    ForEach(viewModel.items(for: project)) { item in
+                        ItemRowView(project: project, item: item)
                     }
-                    viewModel.dataController.save()
-                }
-                .actionSheet(isPresented: $showingSortOrder) {
-                    ActionSheet(title: Text("Sort items"), message: nil, buttons: [
-                        .default(Text("Optimized")) { viewModel.sortOrder = .optimized },
-                        .default(Text("Creation Date")) { viewModel.sortOrder = .creationDate },
-                        .default(Text("Title")) { viewModel.sortOrder = .title }
-                    ])
-                }
+                    .onDelete { offsets in
+                        let allItems = project.projectItems
 
-                if viewModel.showClosedProjects == false {
-                    Button {
-                        withAnimation {
-                            viewModel.addItem(to: project)
+                        for offset in offsets {
+                            let item = allItems[offset]
+                            viewModel.dataController.delete(item)
                         }
-                    } label: {
-                        Label("Add New Item", systemImage: "plus")
+                        viewModel.dataController.save()
+                    }
+                    .actionSheet(isPresented: $showingSortOrder) {
+                        ActionSheet(title: Text("Sort items"), message: nil, buttons: [
+                            .default(Text("Optimized")) { viewModel.sortOrder = .optimized },
+                            .default(Text("Creation Date")) { viewModel.sortOrder = .creationDate },
+                            .default(Text("Title")) { viewModel.sortOrder = .title }
+                        ])
+                    }
+
+                    if viewModel.showClosedProjects == false {
+                        Button {
+                            withAnimation {
+                                viewModel.addItem(to: project)
+                            }
+                        } label: {
+                            Label("Add New Item", systemImage: "plus")
+                        }
                     }
                 }
-            }
             }
         }
     }
@@ -98,11 +98,11 @@ struct ProjectsView: View {
                         .toolbar {
                             addProjectToolbarItem
                             sortOrderToolbarItem
-                        }
+                    }
                 }
-
             }
-            .navigationTitle(viewModel.showClosedProjects ? "Closed Projects" : "Open Projects")
+            .navigationTitle(viewModel.showClosedProjects ?
+                             "Closed Projects" : "Open Projects")
             SelectSomethingView()
         }
         .listStyle(InsetGroupedListStyle())
@@ -120,7 +120,5 @@ struct ProjectsView: View {
                 }
             }
         }
-
     }
-
 }
