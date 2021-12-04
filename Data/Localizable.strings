@@ -59,3 +59,10 @@
 
 "New Project" = "New Project";
 "New Item" = "New Item";
+
+"Project reminders" = "Project reminders";
+"Show reminders" = "Show reminders";
+"Oops!" = "Oops!";
+"There was a problem. Please check you have notifications enabled." = "There was a problem. Please check you have notifications enabled.";
+"Check Settings" = "Check Settings";
+"Reminder time" = "Reminder time";

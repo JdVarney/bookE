@@ -44,6 +44,7 @@
 		285186082740269400A121B9 /* ColorAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285186072740269400A121B9 /* ColorAdditions.swift */; };
 		2851860A274073D100A121B9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28518609274073D100A121B9 /* Localizable.strings */; };
 		2884FDEB275A98ED00380ABC /* HomeViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2884FDEA275A98ED00380ABC /* HomeViewViewModel.swift */; };
+		2884FDEE275BA13C00380ABC /* ItemRowViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2884FDED275BA13C00380ABC /* ItemRowViewViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +115,7 @@
 		2853C8932744031A00DCBC82 /* ProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTests.swift; sourceTree = "<group>"; };
 		2853C8952744181200DCBC82 /* AwardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsTests.swift; sourceTree = "<group>"; };
 		2884FDEA275A98ED00380ABC /* HomeViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewViewModel.swift; sourceTree = "<group>"; };
+		2884FDED275BA13C00380ABC /* ItemRowViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRowViewViewModel.swift; sourceTree = "<group>"; };
 		28B0855527441F1B005AEE04 /* DevelopmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,6 +171,7 @@
 				280ABA03274B097C00203006 /* TestPlan.xctestplan */,
 				282AECF127505F260064AA96 /* Open Issues.pdf */,
 				282A91AF273C429900C42745 /* bookEApp.swift */,
+				285185FB273EBF7A00A121B9 /* Data */,
 				282A91AE273C429900C42745 /* bookE */,
 				282A91AD273C429900C42745 /* Products */,
 				282A91DF273C4CCF00C42745 /* Frameworks */,
@@ -189,12 +192,11 @@
 		282A91AE273C429900C42745 /* bookE */ = {
 			isa = PBXGroup;
 			children = (
-				2884FDEC275B046D00380ABC /* View Models */,
-				2827DF3027498998006CEB12 /* bookEUnitTests */,
-				282A91C9273C429A00C42745 /* bookEUITests */,
-				285185FB273EBF7A00A121B9 /* Data */,
-				285185FC273EBFD300A121B9 /* Extensions */,
 				285185FA273EBF1100A121B9 /* Views */,
+				285185FC273EBFD300A121B9 /* Extensions */,
+				2884FDEC275B046D00380ABC /* View Models */,
+				282A91C9273C429A00C42745 /* bookEUITests */,
+				2827DF3027498998006CEB12 /* bookEUnitTests */,
 				282A91B3273C429A00C42745 /* Assets.xcassets */,
 				282A91DE273C4C6800C42745 /* bookE.entitlements */,
 				283CB728273C947E008D5D26 /* Color.xcassets */,
@@ -276,6 +278,7 @@
 			children = (
 				284DCDEC275935DC00D3D77A /* ProjectsViewModel.swift */,
 				2884FDEA275A98ED00380ABC /* HomeViewViewModel.swift */,
+				2884FDED275BA13C00380ABC /* ItemRowViewViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				280ABA1527504F7B00203006 /* ProjectSummaryView.swift in Sources */,
 				280ABA1827504F7B00203006 /* ItemRowView.swift in Sources */,
 				280ABA1627504F7B00203006 /* ContentView.swift in Sources */,
+				2884FDEE275BA13C00380ABC /* ItemRowViewViewModel.swift in Sources */,
 				282BBD5227511DD000D97F9A /* ProjectsView.swift in Sources */,
 				285185FE2740066D00A121B9 /* Bundle-Decodable.swift in Sources */,
 				280ABA1027504F7B00203006 /* AwardsView.swift in Sources */,

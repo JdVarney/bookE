@@ -10,6 +10,8 @@ import CoreData
 
 extension HomeView {
     class ViewModel: NSObject, ObservableObject, NSFetchedResultsControllerDelegate {
+        @Published var selectedItem: Item?
+
         private let projectsController: NSFetchedResultsController<Project>
         private let itemsController: NSFetchedResultsController<Item>
 
@@ -20,6 +22,10 @@ extension HomeView {
 
         var upNext: ArraySlice<Item> {
             items.prefix(3)
+        }
+
+        func selectItem(with identifier: String) {
+            selectedItem = dataController.item(with: identifier)
         }
 
         var moreToExplore: ArraySlice<Item> {
