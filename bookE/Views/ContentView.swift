@@ -6,13 +6,18 @@
 //
 
 import SwiftUI
+import CoreSpotlight
 
 struct ContentView: View {
     @EnvironmentObject var dataController: DataController
     @SceneStorage("selectedView") var selectedView: String?
 
+    func moveToHome(_ input: Any) {
+        selectedView = HomeView.tag
+    }
     var body: some View {
         TabView(selection: $selectedView) {
+
             HomeView(dataController: dataController)
                 .tag(HomeView.tag)
                 .tabItem {
@@ -40,9 +45,9 @@ struct ContentView: View {
                     Image(systemName: "rosette")
                     Text("Awards")
                 }
-            }
-        }
+        }.onContinueUserActivity(CSSearchableItemActionType, perform: moveToHome)
     }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var dataController = DataController.preview
