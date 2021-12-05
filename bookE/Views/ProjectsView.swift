@@ -105,6 +105,9 @@ struct ProjectsView: View {
                              "Closed Projects" : "Open Projects")
             SelectSomethingView()
         }
+        .sheet(isPresented: $viewModel.showingUnlockView) {
+            UnlockView()
+        }
         .listStyle(InsetGroupedListStyle())
         .toolbar {
             if viewModel.showClosedProjects == false {
