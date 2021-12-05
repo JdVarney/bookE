@@ -21,6 +21,10 @@ struct ProjectsView: View {
     static let openTag: String? = "Open"
     static let closedTag: String? = "Closed"
 
+    func openURL(_ url: URL) {
+        viewModel.addProject()
+    }
+
     var addProjectToolbarItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             if viewModel.showClosedProjects == false {
@@ -102,13 +106,14 @@ struct ProjectsView: View {
                 }
             }
             .navigationTitle(viewModel.showClosedProjects ?
-                             "Closed Projects" : "Open Projects")
+                "Closed Projects" : "Open Projects")
             SelectSomethingView()
         }
         .sheet(isPresented: $viewModel.showingUnlockView) {
             UnlockView()
         }
         .listStyle(InsetGroupedListStyle())
+        .onOpenURL(perform: openURL)
         .toolbar {
             if viewModel.showClosedProjects == false {
                 Button {

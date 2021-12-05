@@ -15,6 +15,11 @@ struct ContentView: View {
     func moveToHome(_ input: Any) {
         selectedView = HomeView.tag
     }
+
+    func openURL(_ url: URL) {
+        selectedView = ProjectsView.openTag
+        _ = dataController.addProject()
+    }
     var body: some View {
         TabView(selection: $selectedView) {
 
@@ -45,7 +50,9 @@ struct ContentView: View {
                     Image(systemName: "rosette")
                     Text("Awards")
                 }
-        }.onContinueUserActivity(CSSearchableItemActionType, perform: moveToHome)
+        }
+        .onContinueUserActivity(CSSearchableItemActionType, perform: moveToHome)
+        .onOpenURL(perform: openURL)
     }
 }
 
