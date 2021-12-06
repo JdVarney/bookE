@@ -140,7 +140,7 @@
 		2884FDF1275C3C1400380ABC /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		2884FDF2275C4ADE00380ABC /* SKProduct-LocalizedPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct-LocalizedPrice.swift"; sourceTree = "<group>"; };
 		2884FDF4275C4BC700380ABC /* PurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseButton.swift; sourceTree = "<group>"; };
-		2884FDF6275C4CA100380ABC /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProductView.swift; path = bookE/Unlock/ProductView.swift; sourceTree = SOURCE_ROOT; };
+		2884FDF6275C4CA100380ABC /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProductView.swift; path = bookE/Purchases/ProductView.swift; sourceTree = SOURCE_ROOT; };
 		2884FDF8275C4D4100380ABC /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnlockView.swift; path = bookE/Unlock/UnlockView.swift; sourceTree = SOURCE_ROOT; };
 		2884FDFF275D3ED900380ABC /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		2884FE01275D3ED900380ABC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -221,6 +221,7 @@
 		282A91AE273C429900C42745 /* bookE */ = {
 			isa = PBXGroup;
 			children = (
+				2884FE42275E7B9000380ABC /* Awards */,
 				2884FE41275D66C600380ABC /* Doco */,
 				2884FE40275D660E00380ABC /* Home */,
 				2884FE3F275D658000380ABC /* Items */,
@@ -297,10 +298,6 @@
 		2884FE3A275D60F800380ABC /* Unlock */ = {
 			isa = PBXGroup;
 			children = (
-				285185FB273EBF7A00A121B9 /* Data */,
-				280ABA0527504F7B00203006 /* AwardsView.swift */,
-				2884FDF4275C4BC700380ABC /* PurchaseButton.swift */,
-				2884FDF6275C4CA100380ABC /* ProductView.swift */,
 				2884FDF8275C4D4100380ABC /* UnlockView.swift */,
 				2884FDEF275C3A5600380ABC /* UnlockManager.swift */,
 			);
@@ -310,6 +307,7 @@
 		2884FE3B275D619700380ABC /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				285185FB273EBF7A00A121B9 /* Data */,
 				285185FD2740066D00A121B9 /* Bundle-Decodable.swift */,
 				285186072740269400A121B9 /* ColorAdditions.swift */,
 				282A91DE273C4C6800C42745 /* bookE.entitlements */,
@@ -323,7 +321,9 @@
 		2884FE3C275D63B900380ABC /* Purchases */ = {
 			isa = PBXGroup;
 			children = (
+				2884FDF6275C4CA100380ABC /* ProductView.swift */,
 				2884FDF2275C4ADE00380ABC /* SKProduct-LocalizedPrice.swift */,
+				2884FDF4275C4BC700380ABC /* PurchaseButton.swift */,
 			);
 			path = Purchases;
 			sourceTree = "<group>";
@@ -377,6 +377,14 @@
 				282AECF127505F260064AA96 /* Open Issues.pdf */,
 			);
 			path = Doco;
+			sourceTree = "<group>";
+		};
+		2884FE42275E7B9000380ABC /* Awards */ = {
+			isa = PBXGroup;
+			children = (
+				280ABA0527504F7B00203006 /* AwardsView.swift */,
+			);
+			path = Awards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

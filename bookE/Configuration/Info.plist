@@ -13,6 +13,10 @@
 			<string>rectangle.stack.badge.plus</string>
 		</dict>
 	</array>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>com.jdvarney.newProject</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

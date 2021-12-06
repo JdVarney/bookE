@@ -9,7 +9,9 @@ import Foundation
 import CoreData
 
 extension HomeView {
-    class ViewModel: NSObject, ObservableObject, NSFetchedResultsControllerDelegate {
+    class ViewModel: NSObject, ObservableObject,
+        NSFetchedResultsControllerDelegate {
+
         @Published var selectedItem: Item?
 
         private let projectsController: NSFetchedResultsController<Project>
@@ -36,8 +38,10 @@ extension HomeView {
             self.dataController = dataController
 
             // Construct a fetch request to show all open projects.
-            let projectRequest: NSFetchRequest<Project> = Project.fetchRequest()
-            projectRequest.predicate = NSPredicate(format: "closed = false")
+            let projectRequest: NSFetchRequest<Project> =
+                Project.fetchRequest()
+            projectRequest.predicate =
+                NSPredicate(format: "closed = false")
             projectRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Project.title, ascending: true)]
 
             projectsController = NSFetchedResultsController(

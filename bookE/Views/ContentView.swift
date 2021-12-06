@@ -12,6 +12,8 @@ struct ContentView: View {
     @EnvironmentObject var dataController: DataController
     @SceneStorage("selectedView") var selectedView: String?
 
+    private let newProjectActivity = "com.jdvarney.newProject"
+
     func moveToHome(_ input: Any) {
         selectedView = HomeView.tag
     }
@@ -20,6 +22,12 @@ struct ContentView: View {
         selectedView = ProjectsView.openTag
         _ = dataController.addProject()
     }
+
+    func createProject(_ userActivity: NSUserActivity) {
+        selectedView = ProjectsView.openTag
+        dataController.addProject()
+    }
+
     var body: some View {
         TabView(selection: $selectedView) {
 
@@ -51,7 +59,12 @@ struct ContentView: View {
                     Text("Awards")
                 }
         }
+        .userActivity(newProjectActivity) { activity in
+            activity.isEligibleForPrediction = true
+            activity.title = "New Project"
+        }
         .onContinueUserActivity(CSSearchableItemActionType, perform: moveToHome)
+        .onContinueUserActivity(newProjectActivity, perform: createProject)
         .onOpenURL(perform: openURL)
     }
 }
