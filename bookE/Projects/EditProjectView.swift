@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct EditProjectView: View {
     @ObservedObject var project: Project
 
     @EnvironmentObject var dataController: DataController
     @Environment(\.presentationMode) var presentationMode
+    @AppStorage("username") var username: String?
 
+    @State private var showingSignIn = false
     @State private var showingNotificationsError = false
     @State private var showingDeleteConfirm = false
     @State private var title: String
@@ -79,6 +82,24 @@ struct EditProjectView: View {
         }
     }
 
+    func uploadToCloud() {
+        if let username = username {
+            let records = project.prepareCloudRecords(owner: username)
+            let operation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
+            operation.savePolicy = .allKeys
+
+            operation.modifyRecordsCompletionBlock = { _, _, error in
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                }
+            }
+
+            CKContainer.default().publicCloudDatabase.add(operation)
+        } else {
+            showingSignIn = true
+        }
+    }
+
     var body: some View {
         Form {
             Section(header: Text("Basic settings")) {
@@ -142,6 +163,12 @@ struct EditProjectView: View {
             .accentColor(.red)
         }
         .navigationTitle("Edit Project")
+        .toolbar {
+            Button(action: uploadToCloud) {
+                Label("Upload to iCloud", systemImage: "icloud.and.arrow.up")
+            }
+        }
+        .sheet(isPresented: $showingSignIn, content: SignInView.init)
         .onDisappear(perform: dataController.save)
         .alert(isPresented: $showingDeleteConfirm) {
             Alert(title: Text("Delete project?"),
