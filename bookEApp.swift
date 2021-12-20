@@ -11,11 +11,17 @@ import CoreData
 @main
 // swiftlint:disable type_name
 struct bookEApp: App {
+
     @StateObject var dataController: DataController
     @StateObject var unlockManager: UnlockManager
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     init() {
+
+        #if targetEnvironment(simulator)
+            UserDefaults.standard.set("JDVarney", forKey: "username")
+        #endif
+
         let dataController = DataController()
         let unlockManager = UnlockManager(dataController: dataController)
 
