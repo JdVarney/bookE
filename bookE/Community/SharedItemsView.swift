@@ -22,6 +22,8 @@ struct SharedItemsView: View {
 
     @State private var messagesLoadState = LoadState.inactive
 
+    @State private var cloudError: CloudError?
+
     func signIn() {
         showingSignIn = true
     }
@@ -43,7 +45,7 @@ struct SharedItemsView: View {
 
         CKContainer.default().publicCloudDatabase.save(message) { record, error in
             if let error = error {
-                print(error.localizedDescription)
+                cloudError = error.getCloudKitError()
                 newChatText = backupChatText
             } else if let record = record {
                 let message = ChatMessage(from: record)
@@ -135,8 +137,13 @@ struct SharedItemsView: View {
                 }
             }
         }
+        .alert(item: $cloudError) { error in
+            Alert(
+                title: Text("There was an error"),
+                message: Text(error.message)
+            )
+        }
         .sheet(isPresented: $showingSignIn, content: SignInView.init)
-
         .listStyle(InsetGroupedListStyle())
         .navigationTitle(project.title)
         .onAppear {
@@ -171,17 +178,21 @@ struct SharedItemsView: View {
             itemsLoadState = .success
         }
 
-        operation.queryCompletionBlock = { _, _ in
+        operation.queryCompletionBlock = { _, error in
+            if let error = error {
+                cloudError = error.getCloudKitError()
+            }
+
             if items.isEmpty {
                 itemsLoadState = .noResults
             }
+            CKContainer.default().publicCloudDatabase.add(operation)
         }
-        CKContainer.default().publicCloudDatabase.add(operation)
     }
 }
 
-struct SharedItemsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SharedItemsView(project: SharedProject.example)
+    struct SharedItemsView_Previews: PreviewProvider {
+        static var previews: some View {
+            SharedItemsView(project: SharedProject.example)
+        }
     }
-}

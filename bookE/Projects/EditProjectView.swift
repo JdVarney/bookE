@@ -15,6 +15,7 @@ struct EditProjectView: View {
     @Environment(\.presentationMode) var presentationMode
     @AppStorage("username") var username: String?
 
+    @State private var cloudStatus = CloudStatus.checking
     @State private var showingSignIn = false
     @State private var showingNotificationsError = false
     @State private var showingDeleteConfirm = false
@@ -25,9 +26,15 @@ struct EditProjectView: View {
     @State private var remindMe: Bool
     @State private var reminderTime: Date
 
+    @State private var cloudError: CloudError?
+
     let colorColumns = [
         GridItem(.adaptive(minimum: 44))
     ]
+
+    enum CloudStatus {
+        case checking, exists, absent
+    }
 
     init(project: Project) {
         self.project = project
@@ -90,14 +97,49 @@ struct EditProjectView: View {
 
             operation.modifyRecordsCompletionBlock = { _, _, error in
                 if let error = error {
-                    print("Error: \(error.localizedDescription)")
+                    cloudError = error.getCloudKitError()
                 }
+
+                updateCloudStatus()
             }
 
+            operation.modifyRecordsCompletionBlock = { _, _, _ in
+                updateCloudStatus()
+            }
+
+            cloudStatus = .checking
             CKContainer.default().publicCloudDatabase.add(operation)
         } else {
             showingSignIn = true
         }
+    }
+
+    func updateCloudStatus() {
+        project.checkCloudStatus { exists in
+            if exists {
+                cloudStatus = .exists
+            } else {
+                cloudStatus = .absent
+            }
+        }
+    }
+
+    func removeFromCloud() {
+        let name = project.objectID.uriRepresentation().absoluteString
+        let id = CKRecord.ID(recordName: name)
+
+        let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [id])
+
+        operation.modifyRecordsCompletionBlock = { _, _, error in
+            if let error = error {
+                cloudError = error.getCloudKitError()
+            }
+
+            updateCloudStatus()
+        }
+
+        cloudStatus = .checking
+        CKContainer.default().publicCloudDatabase.add(operation)
     }
 
     var body: some View {
@@ -164,10 +206,26 @@ struct EditProjectView: View {
         }
         .navigationTitle("Edit Project")
         .toolbar {
-            Button(action: uploadToCloud) {
-                Label("Upload to iCloud", systemImage: "icloud.and.arrow.up")
+            switch cloudStatus {
+            case .checking:
+                ProgressView()
+            case .exists:
+                Button(action: removeFromCloud) {
+                    Label("Remove from iCloud", systemImage: "icloud.slash")
+                }
+            case .absent:
+                Button(action: uploadToCloud) {
+                    Label("Upload to iCloud", systemImage: "icloud.and.arrow.up")
+                }
             }
         }
+        .alert(item: $cloudError) { error in
+            Alert(
+                title: Text("There was an error"),
+                message: Text(error.message)
+            )
+        }
+        .onAppear(perform: updateCloudStatus)
         .sheet(isPresented: $showingSignIn, content: SignInView.init)
         .onDisappear(perform: dataController.save)
         .alert(isPresented: $showingDeleteConfirm) {
