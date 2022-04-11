@@ -33,7 +33,8 @@ class DataController: ObservableObject {
                     managedObjectModel: Self.model)
 
         if inMemory {
-            container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
+            container.persistentStoreDescriptions.first?.url =
+                  URL(fileURLWithPath: "/dev/null")
         } else {
             let groupID = "group.com.jdvarney.bookE.widget"
 
