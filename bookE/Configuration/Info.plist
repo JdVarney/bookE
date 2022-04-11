@@ -2,20 +2,39 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIApplicationShortcutItems</key>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>jdv.png</string>
+	</array>
+	<key>CFBundleIdentifier</key>
+	<string></string>
+	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>New Project</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>bookE://NewProject</string>
-			<key>UIApplicationShortcutItemIconSymbolName</key>
-			<string>rectangle.stack.badge.plus</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.jdvarney.bookE</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>bookE</string>
+			</array>
 		</dict>
 	</array>
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>com.jdvarney.newProject</string>
+	</array>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>rectangle.stack.badge.plus</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>New Project</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>bookE://NewProject</string>
+		</dict>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
